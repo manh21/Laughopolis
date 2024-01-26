@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://djhl5273trhya"]
+
+[ext_resource type="Texture2D" uid="uid://bi7qseaa8jh7v" path="res://Assets/NinjaAdventure/Items/Other/Letter2.png" id="1_jgbd7"]
+[ext_resource type="PackedScene" uid="uid://b4hw1j4cp2kv4" path="res://Scripts/Components/health_component.tscn" id="2_el5vg"]
+[ext_resource type="PackedScene" uid="uid://1petr22jnh0l" path="res://Scripts/Components/hitbox_component.tscn" id="3_bcu5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t07ny"]
+size = Vector2(9, 1.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2083"]
+size = Vector2(13.75, 7.75)
+
+[node name="Letter" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jgbd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 16
+visibility_layer = 10
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_t07ny")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_el5vg")]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_bcu5h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.125, 0.125)
+shape = SubResource("RectangleShape2D_q2083")
