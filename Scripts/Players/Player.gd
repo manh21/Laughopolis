@@ -22,13 +22,11 @@ func _physics_process(delta):
 	input_direction = input_direction.normalized()
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
-		var shoot_direction = get_viewport().get_mouse_position() - position;
+		var shoot_direction = get_global_mouse_position() - position;
 		Shoot.emit(position, shoot_direction)
 		can_shoot = false
 		shot_timer.start()
 		
-	look_at(get_global_mouse_position())
-	
 	update_animation_parameters(input_direction)
 	
 	velocity = input_direction * move_speed

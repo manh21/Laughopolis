@@ -253,7 +253,7 @@ size = Vector2(18, 17.75)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 5
+collision_mask = 13
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_lci3o")
@@ -285,7 +285,7 @@ parameters/walk/blend_position = Vector2(-0.00160003, 0.130837)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_j80ky")]
 collision_layer = 1
-collision_mask = 5
+collision_mask = 13
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -293,7 +293,7 @@ position = Vector2(0, 0.875)
 shape = SubResource("RectangleShape2D_khe6h")
 
 [node name="ShotTimer" type="Timer" parent="."]
-wait_time = 0.495
+wait_time = 0.345
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

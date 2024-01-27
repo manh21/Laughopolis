@@ -8,19 +8,18 @@
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(120, 62)
 
 [node name="Player" parent="." instance=ExtResource("1_8x60h")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_rbpkl")
 bullet_scene = ExtResource("3_5c3i6")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
 
 [node name="Letter" parent="." instance=ExtResource("2_8x30g")]
 position = Vector2(88, 26)

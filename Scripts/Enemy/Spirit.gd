@@ -5,12 +5,17 @@ class_name SpiritEnemy
 var health
 var taking_damage := false
 var current_stun_time := 0.0
+var alive : bool
 
 func _ready():
 	health = MAX_HEALTH
+	alive = true
 
 func _physics_process(_delta): 
-	move_and_slide()
+	if alive:
+		move_and_slide()
+	else:
+		pass
 	
 func damage(attack: Attack):
 	health -= attack.attack_damage
@@ -23,8 +28,6 @@ func damage(attack: Attack):
 	velocity = (global_position - attack.attack_position).normalized() * attack.knockback_force
 
 func _on_hitbox_component_body_entered(body):
-	print(body)
-	
 	if body.has_method("damage"): 
 		var attack = Attack.new()
 		attack.attack_damage = 10.0
@@ -35,7 +38,7 @@ func _on_hitbox_component_body_entered(body):
 
 
 func _on_hitbox_component_area_entered(area):
-	print(area)
+	#print(area)
 	if area is HitboxComponent:
 		var attack = Attack.new()
 		attack.attack_damage = 10.0
@@ -43,3 +46,11 @@ func _on_hitbox_component_area_entered(area):
 		attack.attack_position = global_position
 		
 		area.damage(attack)
+
+
+func _on_health_component_die(health):
+	alive = false
+	queue_free()
+	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
+	
