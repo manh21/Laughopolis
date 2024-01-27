@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciar0xkec6idb"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/Monk.gd" id="1_b00r1"]
+[ext_resource type="Texture2D" uid="uid://b46xo42bxomgj" path="res://Assets/NinjaAdventure/Actor/Characters/Monk/SpriteSheet.png" id="1_gsr62"]
+[ext_resource type="Script" path="res://Scripts/NPC/monk_dialouge.gd" id="4_kwae6"]
+[ext_resource type="PackedScene" uid="uid://ddgmnlv2d32g5" path="res://Scripts/Objects/BubbleText.tscn" id="4_qbat8"]
+[ext_resource type="PackedScene" uid="uid://b2p0276fi76xb" path="res://Dialouge/MonkDialouge.tscn" id="5_v8dup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng64l"]
+size = Vector2(17.5698, 8.39999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8nbh"]
+
+[node name="Monk" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource("1_b00r1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gsr62")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.408881, 6.38462)
+scale = Vector2(0.636448, -0.384616)
+shape = SubResource("RectangleShape2D_ng64l")
+
+[node name="BubbleText" parent="." instance=ExtResource("4_qbat8")]
+position = Vector2(0, -13)
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("4_kwae6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c8nbh")
+
+[node name="Dialouge" parent="." instance=ExtResource("5_v8dup")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

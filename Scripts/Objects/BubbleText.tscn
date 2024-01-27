@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddgmnlv2d32g5"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/BubbleText.gd" id="1_72mhd"]
+[ext_resource type="Texture2D" uid="uid://bml3eqvdj37vs" path="res://Assets/NinjaAdventure/HUD/Dialog/DialogInfo.png" id="1_ouwai"]
+
+[sub_resource type="Animation" id="Animation_m58k4"]
+resource_name = "dialog_buble"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_5aydh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0ekb7"]
+resource_name = "complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nugo8"]
+_data = {
+"RESET": SubResource("Animation_5aydh"),
+"complete": SubResource("Animation_0ekb7"),
+"dialog_buble": SubResource("Animation_m58k4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlhe5"]
+animation = &"complete"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aob0q"]
+animation = &"dialog_buble"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tmlee"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dee2b"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2wdlj"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n0tu7"]
+states/End/position = Vector2(853, 86)
+states/complete/node = SubResource("AnimationNodeAnimation_qlhe5")
+states/complete/position = Vector2(578, 80)
+states/dialog_buble/node = SubResource("AnimationNodeAnimation_aob0q")
+states/dialog_buble/position = Vector2(390, 65)
+transitions = ["Start", "dialog_buble", SubResource("AnimationNodeStateMachineTransition_tmlee"), "dialog_buble", "complete", SubResource("AnimationNodeStateMachineTransition_dee2b"), "complete", "dialog_buble", SubResource("AnimationNodeStateMachineTransition_2wdlj")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o8is"]
+radius = 9.0
+height = 20.0
+
+[node name="BubbleText" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_72mhd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nugo8")
+}
+tree_root = SubResource("AnimationNodeStateMachine_n0tu7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ouwai")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1o8is")
