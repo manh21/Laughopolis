@@ -8,6 +8,7 @@ var current_stun_time := 0.0
 var alive : bool
 
 func _ready():
+	add_to_group("Spirits")
 	health = MAX_HEALTH
 	alive = true
 
@@ -36,7 +37,6 @@ func _on_hitbox_component_body_entered(body):
 		
 		body.damage(attack)
 
-
 func _on_hitbox_component_area_entered(area):
 	#print(area)
 	if area is HitboxComponent:
@@ -47,10 +47,8 @@ func _on_hitbox_component_area_entered(area):
 		
 		area.damage(attack)
 
-
 func _on_health_component_die(health):
 	alive = false
 	queue_free()
 	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
-	

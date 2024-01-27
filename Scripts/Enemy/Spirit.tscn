@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_l234g")
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_k2wri")]
 visibility_layer = 5
 collision_layer = 4
-collision_mask = 7
+collision_mask = 3
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
