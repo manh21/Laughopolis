@@ -11,7 +11,6 @@
 y_sort_enabled = true
 
 [node name="World" parent="." instance=ExtResource("1_nsxc7")]
-y_sort_enabled = true
 position = Vector2(162.579, 12.1709)
 
 [node name="Player" parent="." instance=ExtResource("1_8x60h")]
