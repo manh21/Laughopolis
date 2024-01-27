@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmreufjgwic8r"]
+[gd_scene load_steps=5 format=3 uid="uid://cmreufjgwic8r"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Bullet.gd" id="1_ojgy6"]
 [ext_resource type="Texture2D" uid="uid://bgqfmqma22ax" path="res://Assets/NinjaAdventure/Items/Weapons/Bow2/Arrow.png" id="2_1opay"]
+[ext_resource type="PackedScene" uid="uid://cb31fy1jk1p2a" path="res://Scripts/Particles/Explosion.tscn" id="3_whs7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rfi"]
 size = Vector2(14, 6)
@@ -10,6 +11,7 @@ size = Vector2(14, 6)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_ojgy6")
+explosion_scene = ExtResource("3_whs7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1opay")
@@ -19,6 +21,10 @@ shape = SubResource("RectangleShape2D_l5rfi")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Explosion" parent="." instance=ExtResource("3_whs7m")]
+visible = false
+scale_amount_max = 0.3
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

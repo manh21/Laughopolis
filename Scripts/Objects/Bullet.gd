@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var explosion_scene: PackedScene
 @export var speed: float = 200
 var direction: Vector2
 
@@ -19,7 +20,17 @@ func _on_area_entered(area):
 		attack.attack_position = global_position
 		
 		area.damage(attack)
-		queue_free()
+		explode()
+
+func explode():
+	speed = 0
+	var explosion = explosion_scene.instantiate()
+	add_child(explosion)
+	explosion.position = global_position - position
+	explosion.add_to_group("explosions")
+	
+	$Sprite2D.set_deferred("visible", false)
+	$CollisionShape2D.set_deferred("visible", false)
 
 
 func _on_body_entered(body):
