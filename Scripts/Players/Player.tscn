@@ -253,7 +253,7 @@ size = Vector2(18, 17.75)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 13
+collision_mask = 125
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_lci3o")
