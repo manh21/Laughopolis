@@ -16,12 +16,6 @@ func set_bubble(bubbleComplete = is_completed):
 
 func _on_area_2d_body_entered(body):
 	$Dialouge.start()
-	set_bubble(true)
 
 func _on_area_2d_body_exited(body):
 	$Dialouge.exit()
-	
-	if $Dialouge.is_dialouge_completed:
-		set_bubble(true)
-	else:
-		set_bubble(false)

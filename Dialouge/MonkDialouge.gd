@@ -21,12 +21,10 @@ func start():
 	next_script()
 	
 func exit():
-	if is_dialouge_completed:
+		is_active = false
+		$NinePatchRect.visible = false
+		current_dialouge_id -= 1
 		return
-	is_active = false
-	$NinePatchRect.visible = false
-	current_dialouge_id -= 1
-	return
 	
 func load_dialouge():
 	var json = JSON.new()
