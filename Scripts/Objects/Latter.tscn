@@ -26,5 +26,7 @@ shape = SubResource("RectangleShape2D_t07ny")
 [node name="HitboxComponent" parent="." instance=ExtResource("3_bcu5h")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+light_mask = 16
+visibility_layer = 5
 position = Vector2(0.125, 0.125)
 shape = SubResource("RectangleShape2D_q2083")

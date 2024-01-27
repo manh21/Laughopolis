@@ -11,15 +11,14 @@ config_version=5
 [application]
 
 config/name="ggj_make_me_laugh"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=2
-window/stretch/scale=4.0
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/scale_mode="integer"
 
 [input]
@@ -57,6 +56,12 @@ right={
 2d_render/layer_4="Enemy Attack"
 2d_render/layer_5="Objects"
 2d_render/layer_6="Terrain"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Player Attack"
+2d_physics/layer_3="Enemey"
+2d_physics/layer_4="Enemy Attack"
+2d_physics/layer_5="Object"
+2d_physics/layer_6="Terrain"
 
 [rendering]
 

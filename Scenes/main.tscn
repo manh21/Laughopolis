@@ -1,7 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3gril062olll"]
+[gd_scene load_steps=6 format=3 uid="uid://c3gril062olll"]
 
 [ext_resource type="PackedScene" uid="uid://cg3afxvtvygcy" path="res://Scripts/Players/Player.tscn" id="1_8x60h"]
+[ext_resource type="PackedScene" uid="uid://djhl5273trhya" path="res://Scripts/Objects/Latter.tscn" id="2_8x30g"]
+[ext_resource type="Script" path="res://Scenes/BulletManager.gd" id="2_rbpkl"]
+[ext_resource type="PackedScene" uid="uid://cmreufjgwic8r" path="res://Scripts/Objects/Bullet.tscn" id="3_5c3i6"]
+[ext_resource type="PackedScene" uid="uid://b7t0aidlgtqqt" path="res://Scripts/Enemy/Spirit.tscn" id="3_flaoj"]
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(120, 62)
 
 [node name="Player" parent="." instance=ExtResource("1_8x60h")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("2_rbpkl")
+bullet_scene = ExtResource("3_5c3i6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Letter" parent="." instance=ExtResource("2_8x30g")]
+position = Vector2(88, 26)
+
+[node name="Letter2" parent="." instance=ExtResource("2_8x30g")]
+position = Vector2(-32, 74)
+
+[node name="Spirit" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(85, 102)
+
+[node name="Spirit2" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(-55, 110)
+
+[node name="Spirit3" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(9, 118)
+
+[node name="Spirit4" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(-81, 15)
+
+[node name="Spirit5" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(47, 111)
+
+[node name="Spirit6" parent="." instance=ExtResource("3_flaoj")]
+position = Vector2(-13, 113)
+
+[connection signal="Shoot" from="Player" to="BulletManager" method="_on_player_shoot"]

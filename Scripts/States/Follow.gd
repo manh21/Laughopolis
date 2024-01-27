@@ -1,5 +1,5 @@
 extends State
-class_name EnemyFollow
+class_name Follow
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 20.0
@@ -16,5 +16,5 @@ func Physics_Update(delta: float):
 	else:
 		enemy.velocity = Vector2()
 		
-	if direction.length() > 50:
-		Transitioned.emit(self, "idle")
+	if direction.length() > 80:
+		Transitioned.emit(self, "Idle")

@@ -1,16 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7t0aidlgtqqt"]
+[gd_scene load_steps=10 format=3 uid="uid://b7t0aidlgtqqt"]
 
+[ext_resource type="Script" path="res://Scripts/Enemy/Spirit.gd" id="1_m2an5"]
 [ext_resource type="Texture2D" uid="uid://dm33qgm6m3t8l" path="res://Assets/NinjaAdventure/Actor/Monsters/Spirit/SpriteSheet.png" id="1_pwh2x"]
 [ext_resource type="PackedScene" uid="uid://b4hw1j4cp2kv4" path="res://Scripts/Components/health_component.tscn" id="2_7iap5"]
 [ext_resource type="PackedScene" uid="uid://1petr22jnh0l" path="res://Scripts/Components/hitbox_component.tscn" id="3_k2wri"]
+[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="5_1m7gb"]
+[ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="6_fb7mk"]
+[ext_resource type="Script" path="res://Scripts/States/Follow.gd" id="7_gtdsw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l234g"]
-size = Vector2(12, 4.5)
+size = Vector2(10, 2.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4k6m"]
-size = Vector2(15.625, 12.9375)
+size = Vector2(9.90625, 9.46875)
 
 [node name="Spirit" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+platform_on_leave = 2
+platform_floor_layers = 4278190080
+script = ExtResource("1_m2an5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pwh2x")
@@ -18,16 +27,35 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+light_mask = 4
+visibility_layer = 4
+position = Vector2(0, 4.875)
 shape = SubResource("RectangleShape2D_l234g")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_7iap5")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_k2wri")]
+visibility_layer = 5
+collision_layer = 5
+collision_mask = 5
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-light_mask = 4
-visibility_layer = 10
-position = Vector2(-1, 0)
+light_mask = 5
+visibility_layer = 5
 shape = SubResource("RectangleShape2D_e4k6m")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_1m7gb")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_fb7mk")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_gtdsw")
+enemy = NodePath("../..")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
