@@ -20,7 +20,8 @@ func _on_area_entered(area):
 		attack.attack_position = global_position
 		
 		area.damage(attack)
-		explode()
+		
+	explode()
 
 func explode():
 	speed = 0
