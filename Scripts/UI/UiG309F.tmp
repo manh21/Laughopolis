@@ -119,7 +119,6 @@ _data = {
 }
 
 [node name="UI" type="CanvasLayer"]
-process_mode = 3
 layer = 2
 script = ExtResource("1_xb78w")
 
@@ -130,7 +129,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="TopLeft"]
-layout_mode = 0
 offset_left = 14.111
 offset_top = 16.0
 offset_right = 750.111
@@ -164,14 +162,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="guide" type="Button" parent="Control"]
-layout_mode = 0
 offset_left = -603.889
 offset_top = -188.0
 offset_right = -595.889
 offset_bottom = -180.0
 
 [node name="Panel" type="ColorRect" parent="Control"]
-layout_mode = 0
 offset_left = -15.8892
 offset_top = -16.0002
 offset_right = 24.1108
@@ -225,7 +221,6 @@ texture_normal = ExtResource("6_qke6y")
 stretch_mode = 0
 
 [node name="Gameover" type="ColorRect" parent="Control"]
-layout_mode = 0
 offset_left = -15.8892
 offset_top = -368.0
 offset_right = 24.1108
@@ -266,7 +261,6 @@ scale = Vector2(0.09, 0.09)
 texture_normal = ExtResource("6_qke6y")
 
 [node name="Guide" type="ColorRect" parent="Control"]
-layout_mode = 0
 offset_left = 24.1105
 offset_top = -80.0006
 offset_right = 64.1105
@@ -335,7 +329,6 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="info" type="ColorRect" parent="BottomLeft"]
-layout_mode = 0
 offset_left = -165.0
 offset_top = -174.0
 offset_right = -165.0
@@ -371,7 +364,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="setting" type="ColorRect" parent="BottomRight"]
-layout_mode = 0
 offset_left = -175.0
 offset_top = -412.0
 offset_right = -175.0
@@ -393,9 +385,6 @@ libraries = {
 "": SubResource("AnimationLibrary_65c2v")
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
 [connection signal="pressed" from="Control/Panel/Restart/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Control/Panel/Resume/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Control/Panel/Exit/exit" to="." method="_on_exit_pressed"]
@@ -404,4 +393,3 @@ wait_time = 2.0
 [connection signal="pressed" from="Control/Guide/resumeinfo" to="." method="_on_resumeinfo_pressed"]
 [connection signal="pressed" from="BottomLeft/info/info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="BottomRight/setting/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

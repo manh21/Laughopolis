@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjpkmvfk3rqb5"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/Prolog.gd" id="1_o84oh"]
+[ext_resource type="Texture2D" uid="uid://3w1dd63rbfum" path="res://Assets/NinjaAdventure/Actor/Characters/Master/SpriteSheet.png" id="2_sggyd"]
+[ext_resource type="PackedScene" uid="uid://ddgmnlv2d32g5" path="res://Scripts/Objects/BubbleText.tscn" id="3_r2t7g"]
+[ext_resource type="PackedScene" uid="uid://cwdrc5gtviao8" path="res://Dialouge/PrologDialouge.tscn" id="4_y2xv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vavo"]
+size = Vector2(26, 28)
+
+[node name="Prolog" type="Area2D"]
+script = ExtResource("1_o84oh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sggyd")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5vavo")
+
+[node name="BubbleText" parent="." instance=ExtResource("3_r2t7g")]
+position = Vector2(1, -16)
+scale = Vector2(0.600001, 0.600001)
+
+[node name="Dialouge" parent="." instance=ExtResource("4_y2xv2")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

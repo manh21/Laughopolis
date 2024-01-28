@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 signal Shoot
 signal score
+signal Die
 
 var attacking: bool = false
 var can_shoot: bool = false

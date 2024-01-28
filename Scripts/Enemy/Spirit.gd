@@ -6,7 +6,9 @@ var health
 var taking_damage := false
 var current_stun_time := 0.0
 var alive : bool
+
 signal scoree
+signal Die
 
 func _ready():
 	add_to_group("Spirits")
@@ -41,8 +43,6 @@ func _on_hitbox_component_body_entered(body):
 		body.damage(attack)
 
 func _on_hitbox_component_area_entered(area):
-	#print(area)
-	print('delete')
 	if area is HitboxComponent:
 		var attack = Attack.new()
 		attack.attack_damage = 10.0
@@ -54,7 +54,11 @@ func _on_hitbox_component_area_entered(area):
 func _on_health_component_die(health):
 	alive = false
 	scoree.emit()
+	Die.emit()
 	
 	queue_free()
 	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
+
+func _on_follow_attack():
+	pass	

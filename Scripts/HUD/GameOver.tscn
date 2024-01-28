@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bylmxnvcq81by"]
+[gd_scene load_steps=4 format=3 uid="uid://bylmxnvcq81by"]
 
+[ext_resource type="Script" path="res://Scripts/HUD/GameOver.gd" id="1_uhcao"]
 [ext_resource type="Texture2D" uid="uid://bluxdnh67jovt" path="res://Assets/HUD/Box.png" id="1_ycxao"]
 [ext_resource type="Texture2D" uid="uid://oqs463jv3rd4" path="res://Assets/HUD/restart.png" id="2_b50ak"]
 
 [node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_uhcao")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -20,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
 offset_left = -432.0
 offset_top = -316.0
 offset_right = 425.0
@@ -62,6 +65,19 @@ text = "Your Score: 0"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="BestPlayerScoreLabel" type="Label" parent="Control/NinePatchRect"]
+offset_left = 133.0
+offset_top = 338.0
+offset_right = 749.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Best  Score: 0"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Button" type="TextureButton" parent="Control/NinePatchRect"]
 layout_mode = 0
 offset_left = 164.0
@@ -70,3 +86,5 @@ offset_right = 707.0
 offset_bottom = 576.0
 texture_normal = ExtResource("2_b50ak")
 stretch_mode = 5
+
+[connection signal="button_down" from="Control/NinePatchRect/Button" to="." method="_on_button_button_down"]

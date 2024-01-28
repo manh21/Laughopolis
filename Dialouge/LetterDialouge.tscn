@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
 offset_left = -273.0
 offset_top = -144.0
 offset_right = -99.0
