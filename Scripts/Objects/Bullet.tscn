@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmreufjgwic8r"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Bullet.gd" id="1_ojgy6"]
-[ext_resource type="Texture2D" uid="uid://bgqfmqma22ax" path="res://Assets/NinjaAdventure/Items/Weapons/Bow2/Arrow.png" id="2_1opay"]
+[ext_resource type="Texture2D" uid="uid://b8mlglg3y1ll4" path="res://Assets/Projectile/chip.png" id="3_ntaiq"]
 [ext_resource type="PackedScene" uid="uid://cb31fy1jk1p2a" path="res://Scripts/Particles/Explosion.tscn" id="3_whs7m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rfi"]
-size = Vector2(14, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_eukq3"]
+radius = 4.12311
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
@@ -14,16 +14,16 @@ script = ExtResource("1_ojgy6")
 explosion_scene = ExtResource("3_whs7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_1opay")
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_ntaiq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_l5rfi")
+shape = SubResource("CircleShape2D_eukq3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Explosion" parent="." instance=ExtResource("3_whs7m")]
-visible = false
 scale_amount_max = 0.3
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

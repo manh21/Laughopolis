@@ -9,6 +9,7 @@ var is_dialouge_completed: bool = false
 
 func _ready():
 	$Control.visible = false
+	start()
 	
 func start():
 	if is_active:

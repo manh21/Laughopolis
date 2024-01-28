@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3gril062olll"]
+[gd_scene load_steps=11 format=3 uid="uid://c3gril062olll"]
 
 [ext_resource type="PackedScene" uid="uid://cg3afxvtvygcy" path="res://Scripts/Players/Player.tscn" id="1_8x60h"]
 [ext_resource type="PackedScene" uid="uid://d3rsy7od05vj2" path="res://Scenes/World.tscn" id="1_nsxc7"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_pet6q"]
 [ext_resource type="PackedScene" uid="uid://djhl5273trhya" path="res://Scripts/Objects/Latter.tscn" id="2_8x30g"]
 [ext_resource type="Script" path="res://Scenes/BulletManager.gd" id="2_rbpkl"]
 [ext_resource type="PackedScene" uid="uid://cmreufjgwic8r" path="res://Scripts/Objects/Bullet.tscn" id="3_5c3i6"]
 [ext_resource type="PackedScene" uid="uid://b7t0aidlgtqqt" path="res://Scripts/Enemy/Spirit.tscn" id="3_flaoj"]
+[ext_resource type="PackedScene" uid="uid://bylmxnvcq81by" path="res://Scripts/HUD/GameOver.tscn" id="7_c63my"]
 [ext_resource type="PackedScene" uid="uid://ciar0xkec6idb" path="res://Scripts/NPC/Monk.tscn" id="7_lwcal"]
+[ext_resource type="PackedScene" uid="uid://cwwep1tmq3xfm" path="res://Scripts/Objects/Pintu.tscn" id="8_27el4"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_pet6q")
 
 [node name="World" parent="." instance=ExtResource("1_nsxc7")]
 position = Vector2(162.579, 12.1709)
@@ -26,6 +30,14 @@ zoom = Vector2(4, 4)
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_rbpkl")
 bullet_scene = ExtResource("3_5c3i6")
+
+[node name="Pintu" parent="." instance=ExtResource("8_27el4")]
+position = Vector2(-2, 48)
+
+[node name="HUD" type="Node2D" parent="."]
+process_mode = 2
+
+[node name="GameOver" parent="HUD" instance=ExtResource("7_c63my")]
 
 [node name="Letter" parent="." instance=ExtResource("2_8x30g")]
 position = Vector2(88, 26)
@@ -55,3 +67,4 @@ position = Vector2(-13, 113)
 position = Vector2(38, 32)
 
 [connection signal="Shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
+[connection signal="EndGame" from="Pintu" to="." method="_on_pintu_end_game"]

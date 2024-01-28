@@ -2,12 +2,22 @@
 
 [ext_resource type="Script" path="res://Scripts/NPC/Monk.gd" id="1_b00r1"]
 [ext_resource type="Texture2D" uid="uid://b46xo42bxomgj" path="res://Assets/NinjaAdventure/Actor/Characters/Monk/SpriteSheet.png" id="1_gsr62"]
-[ext_resource type="Script" path="res://Scripts/NPC/monk_dialouge.gd" id="4_kwae6"]
 [ext_resource type="PackedScene" uid="uid://ddgmnlv2d32g5" path="res://Scripts/Objects/BubbleText.tscn" id="4_qbat8"]
 [ext_resource type="PackedScene" uid="uid://b2p0276fi76xb" path="res://Dialouge/MonkDialouge.tscn" id="5_v8dup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ng64l"]
 size = Vector2(17.5698, 8.39999)
+
+[sub_resource type="GDScript" id="GDScript_e6pln"]
+script/source = "extends Area2D
+
+func _input(event):
+	if event.is_action_pressed(\"ui_accept\") and len(get_overlapping_bodies()) < 0:
+		use_dialouge()
+		
+func use_dialouge():
+	pass
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8nbh"]
 
@@ -33,7 +43,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 3
-script = ExtResource("4_kwae6")
+script = SubResource("GDScript_e6pln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_c8nbh")

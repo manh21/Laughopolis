@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2p0276fi76xb"]
+[gd_scene load_steps=4 format=3 uid="uid://bmvcvqll2m057"]
 
-[ext_resource type="Script" path="res://Dialouge/MonkDialouge.gd" id="1_gv40b"]
-[ext_resource type="JSON" path="res://Dialouge/json/monk_dialouge.json" id="2_mfr1f"]
-[ext_resource type="Texture2D" uid="uid://dt0fmf0p2igbk" path="res://Assets/NinjaAdventure/HUD/Dialog/DialogBox.png" id="2_or7uc"]
+[ext_resource type="Script" path="res://Dialouge/LetterDialouge.gd" id="1_x6xy6"]
+[ext_resource type="JSON" path="res://Dialouge/json/letter_dialouge.json" id="2_2buko"]
+[ext_resource type="Texture2D" uid="uid://dt0fmf0p2igbk" path="res://Assets/NinjaAdventure/HUD/Dialog/DialogBox.png" id="2_dh5lk"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_gv40b")
-d_File = ExtResource("2_mfr1f")
+[node name="LetterDialouge" type="CanvasLayer"]
+script = ExtResource("1_x6xy6")
+d_File = ExtResource("2_2buko")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -27,7 +27,7 @@ offset_top = -144.0
 offset_right = -99.0
 offset_bottom = -98.0
 scale = Vector2(3.83774, 3.83774)
-texture = ExtResource("2_or7uc")
+texture = ExtResource("2_dh5lk")
 
 [node name="Name" type="RichTextLabel" parent="Control/NinePatchRect"]
 layout_mode = 0
