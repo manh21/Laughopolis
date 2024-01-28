@@ -18,6 +18,7 @@ func SubtractHealthBar(value):
 	HealthBar.value -= value
 	if (HealthBar.value < 1 and HealthPotion.get_child_count() == 0):
 		$Control/Gameover/AnimationPlayer.play('popup')
+		$GameOverSound.play()
 		get_parent().get_tree().paused = true
 		PlayerDie.emit()
 		

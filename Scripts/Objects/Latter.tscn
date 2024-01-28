@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://djhl5273trhya"]
+[gd_scene load_steps=8 format=3 uid="uid://djhl5273trhya"]
 
+[ext_resource type="Script" path="res://Scripts/Objects/Latter.gd" id="1_0vj7r"]
 [ext_resource type="Texture2D" uid="uid://bi7qseaa8jh7v" path="res://Assets/NinjaAdventure/Items/Other/Letter2.png" id="1_jgbd7"]
 [ext_resource type="PackedScene" uid="uid://b4hw1j4cp2kv4" path="res://Scripts/Components/health_component.tscn" id="2_el5vg"]
 [ext_resource type="PackedScene" uid="uid://1petr22jnh0l" path="res://Scripts/Components/hitbox_component.tscn" id="3_bcu5h"]
+[ext_resource type="PackedScene" uid="uid://bmvcvqll2m057" path="res://Dialouge/LetterDialouge.tscn" id="5_iyvsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t07ny"]
 size = Vector2(9, 1.25)
@@ -11,6 +13,8 @@ size = Vector2(9, 1.25)
 size = Vector2(13.75, 7.75)
 
 [node name="Letter" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_0vj7r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jgbd7")
@@ -25,10 +29,15 @@ shape = SubResource("RectangleShape2D_t07ny")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_bcu5h")]
 collision_layer = 16
-collision_mask = 3
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 light_mask = 16
-visibility_layer = 5
+visibility_layer = 21
 position = Vector2(0.125, 0.125)
 shape = SubResource("RectangleShape2D_q2083")
+
+[node name="LetterDialouge" parent="." instance=ExtResource("5_iyvsm")]
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
+[connection signal="body_exited" from="HitboxComponent" to="." method="_on_hitbox_component_body_exited"]

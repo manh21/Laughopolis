@@ -11,6 +11,8 @@ func _ready():
 	health = MAX_HEALTH
 	
 func damage(attack: Attack):
+	$"../AudioStreamPlayer2D".play()
+	
 	health -= attack.attack_damage
 	serang.emit()
 	if health <= 0:

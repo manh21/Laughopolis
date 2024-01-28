@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c35ae1yw1y1jk"]
+[gd_scene load_steps=20 format=3 uid="uid://c35ae1yw1y1jk"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIGames.gd" id="1_xb78w"]
 [ext_resource type="Texture2D" uid="uid://b74ybm8bapquw" path="res://Assets/NinjaAdventure/HUD/LifeBarMiniUnder.png" id="2_d3pnm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8rhgkhcmsfv0" path="res://Assets/tutorial.png" id="7_8fpqk"]
 [ext_resource type="Texture2D" uid="uid://bufn24srytirh" path="res://Assets/setting.png" id="8_7liel"]
 [ext_resource type="Texture2D" uid="uid://d4kapeqhtuas7" path="res://button/6.png" id="8_nvayj"]
+[ext_resource type="AudioStream" uid="uid://b0dnyjuqx46uj" path="res://Assets/NinjaAdventure/Sounds/Game/GameOver2.wav" id="10_v6fry"]
 
 [sub_resource type="Animation" id="Animation_rlgo1"]
 resource_name = "tes"
@@ -318,9 +319,9 @@ offset_bottom = 134.0
 
 [node name="nilai" type="Label" parent="TopRight/Score/Score"]
 layout_mode = 0
-offset_left = 728.0
+offset_left = 654.0
 offset_top = -22.0
-offset_right = 757.0
+offset_right = 683.0
 offset_bottom = 1.0
 scale = Vector2(4, 4)
 text = "0"
@@ -395,6 +396,9 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_v6fry")
 
 [connection signal="pressed" from="Control/Panel/Restart/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Control/Panel/Resume/resume" to="." method="_on_resume_pressed"]

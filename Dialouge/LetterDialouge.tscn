@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmvcvqll2m057"]
+[gd_scene load_steps=5 format=3 uid="uid://bmvcvqll2m057"]
 
 [ext_resource type="Script" path="res://Dialouge/LetterDialouge.gd" id="1_x6xy6"]
 [ext_resource type="JSON" path="res://Dialouge/json/letter_dialouge.json" id="2_2buko"]
 [ext_resource type="Texture2D" uid="uid://dt0fmf0p2igbk" path="res://Assets/NinjaAdventure/HUD/Dialog/DialogBox.png" id="2_dh5lk"]
+[ext_resource type="AudioStream" uid="uid://bxp5bupjhdlh1" path="res://Assets/NinjaAdventure/Sounds/Menu/Menu1.wav" id="4_yfias"]
 
 [node name="LetterDialouge" type="CanvasLayer"]
 script = ExtResource("1_x6xy6")
@@ -52,5 +53,8 @@ text = "Chat"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yfias")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

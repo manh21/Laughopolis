@@ -9,7 +9,6 @@ var is_dialouge_completed: bool = false
 
 func _ready():
 	$Control.visible = false
-	start()
 	
 func start():
 	if is_active:
@@ -43,6 +42,8 @@ func next_script():
 		$Timer.start()
 		$Control.visible = false
 		return
+		
+	$AudioStreamPlayer2D.play()
 	
 	$Control/NinePatchRect/Name.text = dialouge[current_dialouge_id]['name'];
 	$Control/NinePatchRect/Chat.text = dialouge[current_dialouge_id]['text']

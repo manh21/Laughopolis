@@ -4,6 +4,9 @@ extends Area2D
 @export var speed: float = 200
 var direction: Vector2
 
+func _ready():
+	$AudioStreamPlayer2D2.play()
+
 func _physics_process(delta):
 	position += speed * direction * delta
 	rotation = atan2(direction.y, direction.x)
@@ -29,6 +32,8 @@ func explode():
 	add_child(explosion)
 	explosion.position = global_position - position
 	explosion.add_to_group("explosions")
+	
+	$AudioStreamPlayer2D.play()
 	
 	$Sprite2D.set_deferred("visible", false)
 	$CollisionShape2D.set_deferred("visible", false)

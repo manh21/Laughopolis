@@ -9,6 +9,8 @@
 size = Vector2(26, 28)
 
 [node name="Prolog" type="Area2D"]
+collision_layer = 16
+collision_mask = 27
 script = ExtResource("1_o84oh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

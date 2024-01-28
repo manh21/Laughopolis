@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://cg3afxvtvygcy"]
+[gd_scene load_steps=34 format=3 uid="uid://cg3afxvtvygcy"]
 
 [ext_resource type="Texture2D" uid="uid://pb0vn26h3aj0" path="res://Assets/NinjaAdventure/Actor/Characters/Boy/SpriteSheet.png" id="1_1ps0i"]
 [ext_resource type="Script" path="res://Scripts/Players/Player.gd" id="1_lci3o"]
 [ext_resource type="PackedScene" uid="uid://b4hw1j4cp2kv4" path="res://Scripts/Components/health_component.tscn" id="3_th1x7"]
 [ext_resource type="PackedScene" uid="uid://1petr22jnh0l" path="res://Scripts/Components/hitbox_component.tscn" id="4_j80ky"]
+[ext_resource type="AudioStream" uid="uid://b24gd4fo7d06f" path="res://Assets/NinjaAdventure/Sounds/Game/Alert2.wav" id="5_dc2mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86385"]
 size = Vector2(10, 5)
@@ -285,7 +286,7 @@ parameters/walk/blend_position = Vector2(-0.00160003, 0.130837)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_j80ky")]
 collision_layer = 1
-collision_mask = 13
+collision_mask = 29
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -294,6 +295,9 @@ shape = SubResource("RectangleShape2D_khe6h")
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.45
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dc2mg")
 
 [connection signal="serang" from="HealthComponent" to="." method="_on_health_component_serang"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

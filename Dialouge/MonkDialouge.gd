@@ -42,6 +42,8 @@ func next_script():
 		$Timer.start()
 		$Control.visible = false
 		return
+		
+	$AudioStreamPlayer2D.play()
 	
 	$Control/NinePatchRect/Name.text = dialouge[current_dialouge_id]['name'];
 	$Control/NinePatchRect/Chat.text = dialouge[current_dialouge_id]['text']

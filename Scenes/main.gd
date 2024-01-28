@@ -19,6 +19,7 @@ func _ready():
 func _on_pintu_end_game():
 	get_parent().get_tree().paused = true
 	$UI.show()
+	$HUD/GameOver/AudioStreamPlayer2D.play()
 	$HUD/GameOver.show()
 	$HUD/GameOver/Control/NinePatchRect/Button.pressed.connect(new_game)
 	

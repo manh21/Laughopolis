@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7t0aidlgtqqt"]
+[gd_scene load_steps=11 format=3 uid="uid://b7t0aidlgtqqt"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Spirit.gd" id="1_m2an5"]
 [ext_resource type="Texture2D" uid="uid://dm33qgm6m3t8l" path="res://Assets/NinjaAdventure/Actor/Monsters/Spirit/SpriteSheet.png" id="1_pwh2x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="5_1m7gb"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="6_fb7mk"]
 [ext_resource type="Script" path="res://Scripts/States/Follow.gd" id="7_gtdsw"]
+[ext_resource type="AudioStream" uid="uid://cu3wk1r03umek" path="res://Assets/NinjaAdventure/Sounds/Game/Hit.wav" id="8_bo4qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l234g"]
 size = Vector2(10, 2.25)
@@ -16,7 +17,7 @@ size = Vector2(9.90625, 9.46875)
 
 [node name="Spirit" type="CharacterBody2D" groups=["spirits"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 99
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_m2an5")
@@ -56,6 +57,9 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_gtdsw")
 enemy = NodePath("../..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bo4qu")
 
 [connection signal="Die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
