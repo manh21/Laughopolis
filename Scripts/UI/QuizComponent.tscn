@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpam0tnv5tbce"]
+
+[ext_resource type="Script" path="res://Scripts/UI/QuizComponent.gd" id="1_fgcix"]
+[ext_resource type="Texture2D" uid="uid://biba4gsa8bcq5" path="res://Assets/NinjaAdventure/HUD/Dialog/NoButton.png" id="2_bpvpw"]
+[ext_resource type="Texture2D" uid="uid://24xcyw7rdw2g" path="res://Assets/NinjaAdventure/HUD/Dialog/ChoiceBox.png" id="2_dfly7"]
+
+[node name="QuizComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fgcix")
+
+[node name="answer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="answer"]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 26.0
+offset_right = 660.0
+offset_bottom = 47.0
+scale = Vector2(1.0435, 4.0572)
+texture = ExtResource("2_bpvpw")
+
+[node name="TextureRect2" type="TextureRect" parent="answer"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 21.0
+offset_right = 476.0
+offset_bottom = 42.0
+scale = Vector2(1.0435, 4.0572)
+texture = ExtResource("2_bpvpw")
+
+[node name="question" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 329.0
+offset_top = 415.0
+offset_right = 369.0
+offset_bottom = 455.0
+
+[node name="Label" type="TextureRect" parent="question"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 90.0
+offset_right = 76.0
+offset_bottom = 139.0
+scale = Vector2(6.15341, 2.45549)
+texture = ExtResource("2_dfly7")
+
+[node name="Label" type="Label" parent="question/Label"]
+layout_mode = 0
+offset_left = 8.12558
+offset_top = 13.032
+offset_right = 80.1256
+offset_bottom = 36.032
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "A atau B?"
+
+[connection signal="mouse_entered" from="answer/TextureRect" to="." method="_on_texture_rect_mouse_entered"]

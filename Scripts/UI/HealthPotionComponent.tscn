@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7dg28xukjdn4"]
+
+[ext_resource type="Texture2D" uid="uid://baft5awgm4m1r" path="res://Assets/NinjaAdventure/Items/Potion/Hear.png" id="1_nvp1c"]
+
+[node name="HealthPotionComponent" type="TextureRect"]
+process_mode = 4
+scale = Vector2(3, 3)
+texture = ExtResource("1_nvp1c")

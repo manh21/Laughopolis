@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://babyl6g8tgcoq"]
+
+[node name="Question" type="Label"]
+scale = Vector2(2, 2)
+text = "a atau b?
+"

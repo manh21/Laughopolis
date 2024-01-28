@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var shot_timer = $ShotTimer
 
 signal Shoot
+signal score
 
 var attacking: bool = false
 var can_shoot: bool = false
@@ -58,3 +59,14 @@ func _on_hitbox_component_body_entered(body):
 
 func _on_shot_timer_timeout():
 	can_shoot = true
+
+
+
+func _on_health_component_serang():
+	score.emit()
+	pass # Replace with function body.
+
+
+func _on_spirit_3_scoree():
+	score.emit()
+	pass # Replace with function body.
