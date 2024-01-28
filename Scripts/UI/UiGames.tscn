@@ -1,0 +1,344 @@
+[gd_scene load_steps=19 format=3 uid="uid://c35ae1yw1y1jk"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UIGames.gd" id="1_xb78w"]
+[ext_resource type="Texture2D" uid="uid://b74ybm8bapquw" path="res://Assets/NinjaAdventure/HUD/LifeBarMiniUnder.png" id="2_d3pnm"]
+[ext_resource type="Texture2D" uid="uid://dra2hif1gixqi" path="res://Assets/NinjaAdventure/HUD/LifeBarMiniProgress.png" id="3_1vvef"]
+[ext_resource type="Texture2D" uid="uid://djqd0a13a328s" path="res://Assets/BUT/1.png" id="4_4x5ke"]
+[ext_resource type="Texture2D" uid="uid://dedcfg7peiamj" path="res://Assets/BUT/2.png" id="5_inedr"]
+[ext_resource type="Texture2D" uid="uid://dsyguqthj04kg" path="res://Assets/button sett/3.png" id="6_qke6y"]
+[ext_resource type="Texture2D" uid="uid://b8rhgkhcmsfv0" path="res://Assets/tutorial.png" id="7_8fpqk"]
+[ext_resource type="Texture2D" uid="uid://bufn24srytirh" path="res://Assets/setting.png" id="8_7liel"]
+[ext_resource type="Texture2D" uid="uid://d4kapeqhtuas7" path="res://button/6.png" id="8_nvayj"]
+
+[sub_resource type="Animation" id="Animation_rlgo1"]
+resource_name = "tes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_uqb3p"]
+resource_name = "tes2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqt2a"]
+_data = {
+"tes": SubResource("Animation_rlgo1"),
+"tes2": SubResource("Animation_uqb3p")
+}
+
+[sub_resource type="Animation" id="Animation_hexai"]
+resource_name = "kecil"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(-1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s8ro3"]
+resource_name = "kecil2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65c2v"]
+_data = {
+"kecil": SubResource("Animation_hexai"),
+"kecil2": SubResource("Animation_s8ro3")
+}
+
+[sub_resource type="Animation" id="Animation_3louw"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(14, 14), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_1ijp2"]
+resource_name = "popup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(14, 14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21i6p"]
+_data = {
+"back": SubResource("Animation_3louw"),
+"popup": SubResource("Animation_1ijp2")
+}
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_xb78w")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = 14.0
+offset_top = 22.0
+offset_right = 750.0
+offset_bottom = 261.0
+scale = Vector2(10, 9.86)
+step = 10.0
+value = 100.0
+texture_under = ExtResource("2_d3pnm")
+texture_progress = ExtResource("3_1vvef")
+
+[node name="Score" type="Node2D" parent="."]
+position = Vector2(15, 0)
+
+[node name="Score" type="TextureRect" parent="Score"]
+offset_left = 429.0
+offset_top = 24.0
+offset_right = 1229.0
+offset_bottom = 134.0
+
+[node name="nilai" type="Label" parent="Score/Score"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = -22.0
+offset_right = 757.0
+offset_bottom = 1.0
+scale = Vector2(4, 4)
+text = "0"
+
+[node name="HealthPotion" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 23.0
+offset_top = 7.0
+offset_right = 23.0
+offset_bottom = 7.0
+
+[node name="guide" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 248.0
+offset_right = 24.0
+offset_bottom = 256.0
+
+[node name="Panel" type="ColorRect" parent="."]
+offset_left = 584.0
+offset_top = 400.0
+offset_right = 624.0
+offset_bottom = 440.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(20, 20)
+color = Color(0.572549, 0.572549, 0.572549, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_pqt2a")
+}
+
+[node name="Restart" type="Node2D" parent="Panel"]
+position = Vector2(2.1, 10.6)
+
+[node name="restart" type="TextureButton" parent="Panel/Restart"]
+offset_left = -232.0
+offset_top = -102.2
+offset_right = 268.0
+offset_bottom = 297.8
+scale = Vector2(0.04, 0.01)
+pivot_offset = Vector2(249.6, 104)
+texture_normal = ExtResource("4_4x5ke")
+stretch_mode = 0
+
+[node name="Resume" type="Node2D" parent="Panel"]
+position = Vector2(2.1, 10.6)
+
+[node name="resume" type="TextureButton" parent="Panel/Resume"]
+offset_left = -232.0
+offset_top = -107.6
+offset_right = 268.0
+offset_bottom = 292.4
+scale = Vector2(0.04, 0.01)
+pivot_offset = Vector2(249.6, 104)
+texture_normal = ExtResource("5_inedr")
+stretch_mode = 0
+
+[node name="Exit" type="Node2D" parent="Panel"]
+position = Vector2(2.1, 10.6)
+
+[node name="exit" type="TextureButton" parent="Panel/Exit"]
+offset_left = -232.1
+offset_top = -95.8
+offset_right = 267.9
+offset_bottom = 304.2
+scale = Vector2(0.04, 0.01)
+pivot_offset = Vector2(249.6, 104)
+texture_normal = ExtResource("6_qke6y")
+stretch_mode = 0
+
+[node name="setting" type="ColorRect" parent="."]
+offset_left = 1064.0
+offset_top = 261.0
+offset_right = 1064.0
+offset_bottom = 261.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(163.335, 394.889)
+
+[node name="TextureButton" type="TextureButton" parent="setting"]
+layout_mode = 0
+offset_left = 138.667
+offset_top = 375.482
+offset_right = 188.667
+offset_bottom = 425.482
+pivot_offset = Vector2(26.667, 25.111)
+texture_normal = ExtResource("8_7liel")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="setting"]
+libraries = {
+"": SubResource("AnimationLibrary_65c2v")
+}
+
+[node name="Guide" type="ColorRect" parent="."]
+offset_left = 584.0
+offset_top = 296.0
+offset_right = 624.0
+offset_bottom = 336.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(20, 20)
+color = Color(0.572549, 0.572549, 0.572549, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Guide"]
+layout_mode = 0
+offset_left = 2.7
+offset_top = 7.1
+offset_right = 502.7
+offset_bottom = 407.1
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_8fpqk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide"]
+libraries = {
+"": SubResource("AnimationLibrary_21i6p")
+}
+
+[node name="resumeinfo" type="TextureButton" parent="Guide"]
+layout_mode = 0
+offset_left = 10.2
+offset_top = 36.4
+offset_right = 240.2
+offset_bottom = 86.4
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("5_inedr")
+
+[node name="Gameover" type="ColorRect" parent="."]
+offset_left = 584.0
+offset_top = 48.0
+offset_right = 624.0
+offset_bottom = 88.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(20, 20)
+color = Color(0.572549, 0.572549, 0.572549, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Gameover"]
+layout_mode = 0
+offset_left = 2.7
+offset_top = 7.1
+offset_right = 502.7
+offset_bottom = 407.1
+scale = Vector2(0.07, 0.07)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gameover"]
+libraries = {
+"": SubResource("AnimationLibrary_21i6p")
+}
+
+[node name="restart" type="TextureButton" parent="Gameover"]
+layout_mode = 0
+offset_left = 10.2
+offset_top = 35.4713
+offset_right = 240.2
+offset_bottom = 85.4713
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("4_4x5ke")
+
+[node name="exit" type="TextureButton" parent="Gameover"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 40.9286
+offset_right = 240.0
+offset_bottom = 90.9286
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("6_qke6y")
+
+[node name="info" type="ColorRect" parent="."]
+offset_left = -153.0
+offset_top = 505.0
+offset_right = -153.0
+offset_bottom = 505.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(200.222, 160.37)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="info"]
+libraries = {
+"": SubResource("AnimationLibrary_65c2v")
+}
+
+[node name="info" type="TextureButton" parent="info"]
+layout_mode = 0
+offset_left = -46.6668
+offset_top = -42.2223
+offset_right = 453.333
+offset_bottom = 357.778
+scale = Vector2(0.16, 0.16)
+pivot_offset = Vector2(250, 205.333)
+texture_normal = ExtResource("8_nvayj")
+
+[connection signal="pressed" from="Panel/Restart/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Resume/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/Exit/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="setting/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Guide/resumeinfo" to="." method="_on_resumeinfo_pressed"]
+[connection signal="pressed" from="Gameover/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Gameover/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="info/info" to="." method="_on_info_pressed"]

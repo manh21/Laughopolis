@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bk63thcis8sph"]
+
+[node name="Answer" type="Button"]
+offset_left = 56.0
+offset_top = 26.0
+offset_right = 191.0
+offset_bottom = 57.0
+text = "halooo
+"

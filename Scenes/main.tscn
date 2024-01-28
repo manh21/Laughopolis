@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3gril062olll"]
+[gd_scene load_steps=9 format=3 uid="uid://c3gril062olll"]
 
 [ext_resource type="PackedScene" uid="uid://cg3afxvtvygcy" path="res://Scripts/Players/Player.tscn" id="1_8x60h"]
 [ext_resource type="PackedScene" uid="uid://d3rsy7od05vj2" path="res://Scenes/World.tscn" id="1_nsxc7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmreufjgwic8r" path="res://Scripts/Objects/Bullet.tscn" id="3_5c3i6"]
 [ext_resource type="PackedScene" uid="uid://b7t0aidlgtqqt" path="res://Scripts/Enemy/Spirit.tscn" id="3_flaoj"]
 [ext_resource type="PackedScene" uid="uid://ciar0xkec6idb" path="res://Scripts/NPC/Monk.tscn" id="7_lwcal"]
+[ext_resource type="PackedScene" uid="uid://c35ae1yw1y1jk" path="res://Scripts/UI/UiGames.tscn" id="8_qgfiu"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -43,15 +44,24 @@ position = Vector2(-55, 110)
 position = Vector2(9, 118)
 
 [node name="Spirit4" parent="." instance=ExtResource("3_flaoj")]
+visible = false
 position = Vector2(-81, 15)
 
 [node name="Spirit5" parent="." instance=ExtResource("3_flaoj")]
+visible = false
 position = Vector2(47, 111)
 
 [node name="Spirit6" parent="." instance=ExtResource("3_flaoj")]
+visible = false
 position = Vector2(-13, 113)
 
 [node name="Monk" parent="." instance=ExtResource("7_lwcal")]
 position = Vector2(38, 32)
 
+[node name="UI" parent="." instance=ExtResource("8_qgfiu")]
+
 [connection signal="Shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
+[connection signal="score" from="Player" to="UI" method="_on_player_score"]
+[connection signal="scoree" from="Spirit" to="UI" method="_on_spirit_scoree"]
+[connection signal="scoree" from="Spirit2" to="UI" method="_on_spirit_2_scoree"]
+[connection signal="scoree" from="Spirit3" to="UI" method="_on_spirit_3_scoree"]

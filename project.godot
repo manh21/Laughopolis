@@ -15,11 +15,19 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Scripts/UI/Global.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/scale_mode="integer"
+
+[dotnet]
+
+project/assembly_name="ggj_make_me_laugh"
 
 [input]
 
